@@ -1,0 +1,78 @@
+# Template for me/profile.yml. Don't edit this file: run /setup (or /profile) and the
+# agent fills me/profile.yml for you by reading your CV and asking what it doesn't say.
+# You can still hand-edit me/profile.yml afterwards; every agent re-reads it on each run.
+
+version: 1
+
+# Set by /setup only after you explicitly accept the warning. Agents refuse to search,
+# apply or read email while this is empty.
+disclaimer_accepted_at: null
+
+person:
+  name: ""
+  location: ""                   # city, region, country
+  timezone: "America/Mexico_City"
+  email: ""                      # inbox the email checker reads
+  email_webmail: ""              # outlook | gmail | other (URL)
+  phone: ""
+  linkedin_url: ""
+  github_url: ""
+  portfolio_url: ""              # used for optional "Website/Portfolio" fields
+
+cv:
+  en: me/cv_en.pdf
+  es: me/cv_es.pdf
+  # Which CV to send: match the language the job posting is written in.
+  language_rule: posting
+
+target:
+  seniority: [mid, senior]       # in priority order: junior | mid | senior | lead
+  strategy_note: ""              # free text the agents should honor, e.g. "prioritize the Spanish-speaking market for now"
+  modality:
+    remote: true
+    # Hybrid/on-site is accepted ONLY in these cities (empty = remote only).
+    onsite_cities: []
+  markets: []                    # e.g. [MX, LATAM, US-remote, EU-remote]
+  languages:                     # honest levels; agents answer screening questions with these
+    es: native
+    en: B2
+  search_titles:                 # what the search agents type into each platform
+    priority: []                 # searched first
+    local_language: []           # titles in the local market's language, e.g. "Desarrollador Full Stack"
+    adjacent: []                 # nearby roles worth trying, e.g. "AI Engineer"
+    general: []
+  avoid: []                      # stacks / roles / industries to skip, e.g. ["pure .NET", "QA only"]
+  max_applications_per_company: 2
+
+screening_defaults:              # answers reused on every application form
+  expected_salary:
+    amount: null
+    currency: USD
+    period: year                 # year | month | hour
+    note: ""                     # e.g. "~25,000 MXN/month"
+  notice_period: ""              # e.g. "immediate", "2 weeks"
+  work_authorization: ""         # e.g. "Mexican citizen; no US work visa, contractor only"
+  relocation: ""
+  availability_start: ""
+
+honesty:
+  # Never claim these, even if a form pushes for it.
+  do_not_claim: []
+  # Real experience that is NOT in the CV but may be mentioned when relevant.
+  extra_real_skills: []
+
+platforms:                       # see platforms/*.md for how each site is handled
+  linkedin:     {enabled: true,  account: true}
+  indeed:       {enabled: true,  account: true}
+  occ:          {enabled: false, account: false}
+  computrabajo: {enabled: false, account: false}
+  getonboard:   {enabled: false, account: false}
+  torre:        {enabled: false, account: false}
+  upwork:       {enabled: false, account: false}
+  jooble:       {enabled: false, account: false}
+  weremoto:     {enabled: false, account: false}
+
+rules:
+  submit: true                   # false = fill the form and stop before the final Submit
+  batch_per_platform: 8          # max new applications per platform per run
+  ask_on_opinion_questions: true # stop and ask you for "why do you want to work here?"-type questions

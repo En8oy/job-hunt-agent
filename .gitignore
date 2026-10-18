@@ -1,0 +1,10 @@
+# Your personal data never leaves your machine.
+me/*
+!me/README.md
+!me/cv_original/
+me/cv_original/*
+!me/cv_original/.gitkeep
+
+__pycache__/
+*.pyc
+.DS_Store

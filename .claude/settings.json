@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 tracker/tracker.py:*)",
+      "Bash(python3 tools/render_cv.py:*)",
+      "Read(me/**)",
+      "Edit(me/**)",
+      "Write(me/**)",
+      "Edit(platforms/**)"
+    ]
+  }
+}
